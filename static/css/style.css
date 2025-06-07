@@ -297,6 +297,8 @@ h6 {
   }
 }
 
+@media (max-width: 600px){#hero{height: 60vh !important;}}
+
 
 #hero .social-links .login {
   background: #0563bb !important;
