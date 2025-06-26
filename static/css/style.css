@@ -253,7 +253,7 @@ h6 {
   top: 10px;
   z-index: 9998;
   border: 0;
-  background: none;
+  background: #ffffff;
   font-size: 28px;
   transition: all 0.4s;
   outline: none !important;
@@ -296,6 +296,8 @@ h6 {
     padding-left: 160px;
   }
 }
+
+@media (max-width: 600px){#hero{height: 60vh !important;}}
 
 
 #hero .social-links .login {
@@ -565,7 +567,7 @@ section {
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
+  line-height: 24px;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -837,7 +839,7 @@ section {
 
 .contact .form button[type=submit] {
   background: #0563bb;
-  border: 0;
+  border: 2px solid #0563bb;
   padding: 10px 35px ;
   color: #fff;
   transition: 0.4s;
@@ -908,6 +910,7 @@ section {
   background: #0563bb;
   color: #fff;
   line-height: 1;
+  border: 2px solid #0563bb;
   padding: 8px 0;
   margin-right: 4px;
   border-radius: 50%;
@@ -983,8 +986,14 @@ background: #eee;
     background: #0563bb;
     padding: 10px 18px;
     margin-bottom: 8px;
+    border: 1px solid #0563bb;
     transition: 0.3s;
     font-size: 15px;
     border-radius: 50px;
     overflow: hidden;
     transition: 0.3s;}
+
+    .readmore:hover{color: #0563bb;
+    background: #ffffff;
+    }
+

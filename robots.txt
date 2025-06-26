@@ -1,0 +1,7 @@
+User-agent: *
+Disallow:
+
+User-agent: Slurp
+Disallow:
+
+Sitemap: https://shafeel-am.ct.ws/sitemap.xml
