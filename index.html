@@ -781,6 +781,28 @@ Technology projects typically involve diverse stakeholders—designers, develope
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<script>
+  const form = document.getElementById('contact-enquiry');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbwZRjObxJCBN2lA_Fc5SxZ3uABevIgO0kE3GyJxMRBTyRHqwi8d2Lj0rzX4KVb01vA0jA/exec', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    .then(response => console.log('Saved to Google Sheets'))
+    .catch(error => console.error('Error!', error.message));
+
+    form.submit(); // this continues the default form submission to email
+  });
+</script>
 
   <!-- Vendor JS Files -->
   <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
