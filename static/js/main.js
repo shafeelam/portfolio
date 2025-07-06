@@ -1,15 +1,6 @@
-/**
-* Template Name: MyResume - v4.8.1
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
-
-  /**
-   * Easy selector helper function
-   */
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -284,3 +275,38 @@ const readMoreBtn = document.getElementById('readMoreBtn');
     readLessBtn.classList.add('d-none');
     readMoreBtn.classList.remove('d-none');
   });
+
+
+  const hero = document.getElementById('hero');
+
+const banners = [
+  'url("/static/img/shafeel-banner")',
+  'url("https://example.com/banner2.jpg")',
+  'url("https://example.com/banner3.jpg")',
+  // Add more URLs
+];
+
+let currentIndex = 0;
+
+function changeBanner() {
+  hero.classList.add('fade-out');
+
+  setTimeout(() => {
+    hero.style.backgroundImage = banners[currentIndex];
+    currentIndex = (currentIndex + 1) % banners.length;
+
+    // Fade in
+    hero.classList.remove('fade-out');
+    hero.classList.add('fade-in');
+
+    setTimeout(() => {
+      hero.classList.remove('fade-in');
+    }, 1000); // Same as transition duration
+  }, 1000); // Wait for fade-out to finish
+}
+
+// Initial load
+changeBanner();
+
+// Change every 10 seconds
+setInterval(changeBanner, 10000);
