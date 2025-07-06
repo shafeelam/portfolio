@@ -297,15 +297,17 @@ h6 {
   z-index: -1;
 }
 
-/* Starting state for sliding image */
-.bg-slide.slide-in {
-  transform: translateX(100%);
-  z-index: -1;
-}
-
 .bg-slide.active {
   transform: translateX(0);
   z-index: -2;
+}
+
+.bg-slide.next {
+  transform: translateX(100%);
+}
+
+.bg-slide.out {
+  transform: translateX(-100%);
 }
 
 
