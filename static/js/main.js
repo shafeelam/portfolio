@@ -289,39 +289,38 @@ const banners = [
 
 let currentIndex = 0;
 
-// Create two layers
-const currentBg = document.createElement('div');
-const nextBg = document.createElement('div');
+// Create two background layers
+const bg1 = document.createElement('div');
+const bg2 = document.createElement('div');
 
-currentBg.className = 'bg-slide active';
-nextBg.className = 'bg-slide next';
+bg1.className = 'bg-slide active';
+bg2.className = 'bg-slide slide-in';
 
-currentBg.style.backgroundImage = banners[currentIndex];
+bg1.style.backgroundImage = banners[currentIndex];
 
-hero.appendChild(currentBg);
-hero.appendChild(nextBg);
+hero.appendChild(bg1);
+hero.appendChild(bg2);
 
 function changeBanner() {
   const nextIndex = (currentIndex + 1) % banners.length;
 
-  nextBg.style.backgroundImage = banners[nextIndex];
+  // Set next image on bg2 and bring it in
+  bg2.style.backgroundImage = banners[nextIndex];
+  bg2.classList.remove('slide-in');
+  bg2.classList.add('active');
 
-  // Trigger sliding
-  nextBg.classList.remove('next');
-  nextBg.classList.add('active');
-  currentBg.style.transform = 'translateX(-100%)';
+  // Move current (bg1) out of the way
+  bg1.style.transform = 'translateX(-100%)';
 
+  // After transition, reset bg1 to prepare for next time
   setTimeout(() => {
-    // Reset styles
-    currentBg.style.transform = 'translateX(0)';
-    currentBg.style.backgroundImage = banners[nextIndex];
+    bg1.className = 'bg-slide slide-in'; // Reset to right
+    bg1.style.transform = 'translateX(0)';
 
-    // Reposition nextBg to right
-    nextBg.classList.remove('active');
-    nextBg.classList.add('next');
-
+    // Swap references
+    [bg1, bg2] = [bg2, bg1];
     currentIndex = nextIndex;
-  }, 1000); // match transition
+  }, 1000); // Match CSS transition
 }
 
 setInterval(changeBanner, 10000);
