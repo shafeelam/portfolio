@@ -277,20 +277,33 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
   position: relative;
-  background-position: center;
-  transition: opacity 1s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
 }
-.fade-out {
+
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
+
+#hero.fade-out::before {
   opacity: 0;
 }
 
-.fade-in {
+#hero.fade-in::before {
   opacity: 1;
 }
+
 
 
 @media (min-width: 992px) {
