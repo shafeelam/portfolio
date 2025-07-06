@@ -280,9 +280,11 @@ const readMoreBtn = document.getElementById('readMoreBtn');
   const hero = document.getElementById('hero');
 
 const banners = [
-  'url("/static/img/shafeel-banner")',
-  'url("https://example.com/banner2.jpg")',
-  'url("https://example.com/banner3.jpg")',
+  'url("/static/img/shafeel-banner-1.jpg")',
+  'url("/static/img/shafeel-banner-2.jpg")',
+  'url("/static/img/shafeel-banner-3.jpg")',
+  'url("/static/img/shafeel-banner-4.jpg")',
+  'url("/static/img/shafeel-banner-5.jpg")',
   // Add more URLs
 ];
 
