@@ -277,16 +277,8 @@ const readMoreBtn = document.getElementById('readMoreBtn');
   });
 
 
-  const swiper = new Swiper(".mySwiper", {
-  effect: "fade",
-  loop: true,
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: false,
-  },
-  fadeEffect: {
-    crossFade: true,
-  },
-});
-
+  var swiper = new Swiper(".mySwiper", {
+      effect: "fade",
+      
+    });
  
