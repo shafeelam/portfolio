@@ -285,8 +285,8 @@ const readMoreBtn = document.getElementById('readMoreBtn');
     delay: 2500,
     disableOnInteraction: false,
   },
-  fadeEffect: {
-    crossFade: true,
-  },
+  // fadeEffect: {
+  //   crossFade: true,
+  // },
     });
  
