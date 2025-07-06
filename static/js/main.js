@@ -280,6 +280,7 @@ const readMoreBtn = document.getElementById('readMoreBtn');
   var swiper = new Swiper(".mySwiper", {
       effect: "fade",
       loop: true,
+      speed: 2000,
   autoplay: {
     delay: 4000,
     disableOnInteraction: false,
