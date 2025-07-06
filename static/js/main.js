@@ -278,6 +278,7 @@ const readMoreBtn = document.getElementById('readMoreBtn');
 
 
  const hero = document.getElementById('hero');
+
 const banners = [
   'url("/static/img/shafeel-banner-1.jpg")',
   'url("/static/img/shafeel-banner-2.jpg")',
@@ -288,41 +289,37 @@ const banners = [
 
 let currentIndex = 0;
 
-// Create two background layers
-const currentBg = document.createElement('div');
-const nextBg = document.createElement('div');
-currentBg.className = 'bg-slide current';
-nextBg.className = 'bg-slide next';
+// Create a style tag to dynamically change the background image of ::before
+const styleTag = document.createElement('style');
+document.head.appendChild(styleTag);
 
-currentBg.style.backgroundImage = banners[currentIndex];
-hero.appendChild(currentBg);
-hero.appendChild(nextBg);
-
-function changeBanner() {
-  // Calculate next index
-  const nextIndex = (currentIndex + 1) % banners.length;
-
-  // Set next background image
-  nextBg.style.backgroundImage = banners[nextIndex];
-
-  // Slide nextBg into view
-  nextBg.style.transform = 'translateX(0)';
-
-  // Slide currentBg out to the left
-  currentBg.style.transform = 'translateX(-100%)';
-
-  // After animation, swap roles
-  setTimeout(() => {
-    // Reset styles
-    currentBg.style.transform = 'translateX(0)';
-    nextBg.style.transform = 'translateX(100%)';
-
-    // Update current background image
-    currentBg.style.backgroundImage = banners[nextIndex];
-
-    currentIndex = nextIndex;
-  }, 1000); // match transition duration
+function updateBackground(index) {
+  styleTag.innerHTML = `
+    #hero::before {
+      background-image: ${banners[index]};
+    }
+  `;
 }
 
-// Start the slideshow
-setInterval(changeBanner, 10000);
+function changeBanner() {
+  hero.classList.add('fade-out');
+
+  setTimeout(() => {
+    updateBackground(currentIndex);
+    currentIndex = (currentIndex + 1) % banners.length;
+
+    hero.classList.remove('fade-out');
+    hero.classList.add('fade-in');
+
+    setTimeout(() => {
+      hero.classList.remove('fade-in');
+    }, 1000); // match CSS transition duration
+  }, 1000); // match CSS transition duration
+}
+
+// Initial background
+updateBackground(currentIndex);
+
+// Start loop
+changeBanner();
+setInterval(changeBanner, 5000);
