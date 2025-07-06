@@ -282,6 +282,7 @@ h6 {
   background-size: cover;
   position: relative;
   background-position: center;
+  transition: opacity 1s ease-in-out;
 }
 
 @media (min-width: 992px) {
