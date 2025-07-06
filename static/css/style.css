@@ -296,14 +296,10 @@ h6 {
   z-index: -1;
 }
 
-#hero.fade-out::before {
-  opacity: 0;
+/* Initial position for sliding */
+.bg-slide.next {
+  transform: translateX(100%);
 }
-
-#hero.fade-in::before {
-  opacity: 1;
-}
-
 
 
 @media (min-width: 992px) {
