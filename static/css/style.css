@@ -284,21 +284,27 @@ h6 {
   width: 100%;
 }
 
-#hero::before {
-  content: "";
+.bg-slide {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; transition: transform 1s ease-in-out;
+  background-repeat: no-repeat;
   z-index: -1;
-  height: 100vh;
+  transition: transform 1s ease-in-out;
 }
 
-/* Initial position for sliding */
 .bg-slide.next {
   transform: translateX(100%);
 }
+
+.bg-slide.active {
+  transform: translateX(0);
+}
+
 
 
 @media (min-width: 992px) {
