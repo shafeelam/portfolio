@@ -284,6 +284,14 @@ h6 {
   background-position: center;
   transition: opacity 1s ease-in-out;
 }
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
 
 @media (min-width: 992px) {
   #hero {
