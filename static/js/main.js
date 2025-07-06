@@ -282,7 +282,7 @@ const readMoreBtn = document.getElementById('readMoreBtn');
       loop: true,
       speed: 2000,
   autoplay: {
-    delay: 4000,
+    delay: 2500,
     disableOnInteraction: false,
   },
   fadeEffect: {
