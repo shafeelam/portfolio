@@ -277,7 +277,7 @@ const readMoreBtn = document.getElementById('readMoreBtn');
   });
 
 
-  const hero = document.getElementById('hero');
+ const hero = document.getElementById('hero');
 
 const banners = [
   'url("/static/img/shafeel-banner-1.jpg")',
@@ -285,30 +285,41 @@ const banners = [
   'url("/static/img/shafeel-banner-3.jpg")',
   'url("/static/img/shafeel-banner-4.jpg")',
   'url("/static/img/shafeel-banner-5.jpg")',
-  // Add more URLs
 ];
 
 let currentIndex = 0;
+
+// Create a style tag to dynamically change the background image of ::before
+const styleTag = document.createElement('style');
+document.head.appendChild(styleTag);
+
+function updateBackground(index) {
+  styleTag.innerHTML = `
+    #hero::before {
+      background-image: ${banners[index]};
+    }
+  `;
+}
 
 function changeBanner() {
   hero.classList.add('fade-out');
 
   setTimeout(() => {
-    hero.style.backgroundImage = banners[currentIndex];
+    updateBackground(currentIndex);
     currentIndex = (currentIndex + 1) % banners.length;
 
-    // Fade in
     hero.classList.remove('fade-out');
     hero.classList.add('fade-in');
 
     setTimeout(() => {
       hero.classList.remove('fade-in');
-    }, 1000); // Same as transition duration
-  }, 1000); // Wait for fade-out to finish
+    }, 1000); // match CSS transition duration
+  }, 1000); // match CSS transition duration
 }
 
-// Initial load
-changeBanner();
+// Initial background
+updateBackground(currentIndex);
 
-// Change every 10 seconds
+// Start loop
+changeBanner();
 setInterval(changeBanner, 10000);
