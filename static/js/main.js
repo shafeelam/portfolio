@@ -322,4 +322,4 @@ updateBackground(currentIndex);
 
 // Start loop
 changeBanner();
-setInterval(changeBanner, 5000);
+setInterval(changeBanner, 10000);
