@@ -277,18 +277,44 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
+  position: relative;
   width: 100%;
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80") top right no-repeat;
-  background-size: cover;
-  position: relative;
+  overflow: hidden;  /* hide overflow for slider */
+  padding-left: 0; /* reset padding because we will add in container */
 }
 
 @media (min-width: 992px) {
-  #hero {
-    padding-left: 160px;
+  #hero .container {
+    padding-left: 160px; /* keep padding on container instead */
   }
 }
+
+/* Swiper container full size */
+.swiper {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Each slide covers full hero and backgrounds */
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ 
+/* Your content container should be above the slider */
+#hero > .container {
+  position: relative;
+  z-index: 10;
+  color: white;
+}
+
 
 @media (max-width: 600px){#hero{height: 60vh !important;}}
 
