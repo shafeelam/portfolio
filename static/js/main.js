@@ -278,16 +278,15 @@ const readMoreBtn = document.getElementById('readMoreBtn');
 
 
   var swiper = new Swiper(".mySwiper", {
-      // effect: "fade",
+      effect: "fade",
       loop: true,
       speed: 2000,
   autoplay: {
     delay: 2500,
     disableOnInteraction: false,
   },
-  direction: vertical,
-  // fadeEffect: {
-  //   crossFade: true,
-  // },
+  fadeEffect: {
+    crossFade: true,
+  },
     });
  
