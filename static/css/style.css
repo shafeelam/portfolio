@@ -284,6 +284,8 @@ h6 {
   background-position: center;
   transition: opacity 1s ease-in-out;
 }
+
+#hero:before{background-position: center; background-repeat: no-repeat; background-size: cover;}
 .fade-out {
   opacity: 0;
 }
