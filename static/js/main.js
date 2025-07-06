@@ -280,49 +280,46 @@ const readMoreBtn = document.getElementById('readMoreBtn');
  const hero = document.getElementById('hero');
 
 const banners = [
-  'url("static/img/shafeel-banner-1.jpg")',
-  'url("static/img/shafeel-banner-2.jpg")',
-  'url("static/img/shafeel-banner-3.jpg")',
-  'url("static/img/shafeel-banner-4.jpg")',
-  'url("static/img/shafeel-banner-5.jpg")',
+  'url("/static/img/shafeel-banner-1.jpg")',
+  'url("/static/img/shafeel-banner-2.jpg")',
+  'url("/static/img/shafeel-banner-3.jpg")',
+  'url("/static/img/shafeel-banner-4.jpg")',
+  'url("/static/img/shafeel-banner-5.jpg")',
 ];
 
 let currentIndex = 0;
 
-// Create two background divs
-let bg1 = document.createElement('div');
-let bg2 = document.createElement('div');
+// Create a style tag to dynamically change the background image of ::before
+const styleTag = document.createElement('style');
+document.head.appendChild(styleTag);
 
-bg1.className = 'bg-slide active';
-bg2.className = 'bg-slide next';
-
-bg1.style.backgroundImage = banners[currentIndex];
-
-hero.appendChild(bg1);
-hero.appendChild(bg2);
-
-function changeBanner() {
-  const nextIndex = (currentIndex + 1) % banners.length;
-
-  // Prepare bg2 with new image
-  bg2.style.backgroundImage = banners[nextIndex];
-
-  // Slide in next image and slide out current
-  bg2.className = 'bg-slide active';
-  bg1.className = 'bg-slide out';
-
-  setTimeout(() => {
-    // Swap references but DON'T move bg1 back yet
-    const temp = bg1;
-    bg1 = bg2;
-    bg2 = temp;
-
-    // Reset bg2 for next time
-    bg2.className = 'bg-slide next';
-    bg2.style.transform = 'translateX(100%)';
-
-    currentIndex = nextIndex;
-  }, 1000); // match transition
+function updateBackground(index) {
+  styleTag.innerHTML = `
+    #hero::before {
+      background-image: ${banners[index]};
+    }
+  `;
 }
 
-setInterval(changeBanner, 10000);
+function changeBanner() {
+  hero.classList.add('fade-out');
+
+  setTimeout(() => {
+    updateBackground(currentIndex);
+    currentIndex = (currentIndex + 1) % banners.length;
+
+    hero.classList.remove('fade-out');
+    hero.classList.add('fade-in');
+
+    setTimeout(() => {
+      hero.classList.remove('fade-in');
+    }, 1000); // match CSS transition duration
+  }, 1000); // match CSS transition duration
+}
+
+// Initial background
+updateBackground(currentIndex);
+
+// Start loop
+changeBanner();
+setInterval(changeBanner, 5000);
