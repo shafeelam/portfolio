@@ -9,8 +9,19 @@
 
 
 <url>
-  <loc>https://shafeel-am.netlify.app/</loc>
-  <lastmod>2025-06-09T08:06:40+00:00</lastmod>
+<loc>https://shafeel-am.netlify.app/</loc>
+<lastmod>2025-10-10T14:15:42+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blogs</loc>
+<lastmod>2025-10-10T14:15:42+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blog/server-side-request-forgery-ssrf-an-in-depth-narrative-guide</loc>
+<lastmod>2025-10-10T14:15:42+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 
 
