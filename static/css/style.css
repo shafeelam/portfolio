@@ -1013,6 +1013,12 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
 @media (min-width: 1200px){
   .blog-body .container{width: 900px;}
 }
+
+@media (max-width: 600px){
+  .blog-header img {
+    width: 140px;
+}
+}
 .readmore{color: #fff;
     background: #0563bb;
     padding: 10px 18px;
