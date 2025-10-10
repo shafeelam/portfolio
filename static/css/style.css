@@ -1018,7 +1018,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
   .blog-header img {
     width: 140px;
 }
-  .blog-body h2{font-size: 26px !important; text-transform: unset !important;}
+  .blog-body h2{font-size: 26px !important; text-transform: unset !important;padding-bottom:0 !important; margin-bottom: 0 !important;}
 }
 .readmore{color: #fff;
     background: #0563bb;
