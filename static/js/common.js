@@ -11,6 +11,6 @@ async function includeHTML(id, file) {
 
 // Load header and footer dynamically
 document.addEventListener("DOMContentLoaded", () => {
-  includeHTML("header", "header.html");
-  includeHTML("footer", "footer.html");
+  includeHTML("site-header", "header.html");
+  includeHTML("site-footer", "footer.html");
 });
