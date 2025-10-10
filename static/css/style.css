@@ -349,7 +349,7 @@ h6 {
   color: #0563bb;
 }
 
-#hero h1 {
+ h1 {
   margin: 0;
   font-size: 64px;
   font-weight: 700;
@@ -357,7 +357,7 @@ h6 {
   color: #45505b;
 }
 
-#hero p {
+ p {
   color: #45505b;
   margin: 15px 0 0 0;
   font-size: 26px;
@@ -391,12 +391,12 @@ h6 {
     text-align: center;
   }
 
-  #hero h1 {
+   h1 {
     font-size: 32px;
     line-height: 36px;
   }
 
-  #hero p {
+   p {
     margin-top: 10px;
     font-size: 20px;
     line-height: 24px;
@@ -416,7 +416,7 @@ section {
   padding-bottom: 30px;
 }
 
-.section-title h2 {
+ h2 {
   font-size: 32px;
   font-weight: bold;
   text-transform: uppercase;
