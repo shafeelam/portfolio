@@ -1000,7 +1000,8 @@ background: #eee;
 }
 
 .more-text h4{color: #0563bb;font-weight: 600;}
-
+.blog-header img{width: 180px;}
+.blog-header{padding: 20px;}
 .readmore{color: #fff;
     background: #0563bb;
     padding: 10px 18px;
