@@ -61,7 +61,7 @@
 						<p class="div-paragraph">Below are compact examples that show a safer mindset. They are intentionally conservative: validate, then act.</p>
 						<h3>PHP — validate and allowlist</h3>
 						<pre>
-																				<code>&lt;?php
+<code>&lt;?php
 $allowedHosts = ['example.com', 'images.example.com'];
 
 $url = filter_input(INPUT_GET, 'url', FILTER_VALIDATE_URL);
@@ -88,10 +88,10 @@ if ($content === false) {
 }
 echo $content;
 ?&gt;</code>
-																			</pre>
-						<h3>Node.js (Express) — parse and enforce</h3>
-						<pre>
-																				<code>const { URL } = require('url');
+</pre>
+<h3>Node.js (Express) — parse and enforce</h3>
+<pre>
+<code>const { URL } = require('url');
 const allowedHosts = new Set(['example.com']);
 
 app.get('/fetch', async (req, res) =&gt; {
@@ -107,10 +107,10 @@ app.get('/fetch', async (req, res) =&gt; {
     res.status(400).send('Invalid URL or fetch error');
   }
 });</code>
-																			</pre>
-						<h3>Python — parse and restrict</h3>
-						<pre>
-																				<code>from urllib.parse import urlparse
+</pre>
+<h3>Python — parse and restrict</h3>
+<pre>
+<code>from urllib.parse import urlparse
 import requests
 
 ALLOWED_HOSTS = {'example.com'}
@@ -123,7 +123,7 @@ def fetch(url):
     resp.raise_for_status()
     return resp.text
 </code>
-																			</pre>
+</pre>
 						<p class="div-paragraph">These snippets illustrate the pattern: do not assume the user input is safe; parse it, check the host against an allowlist, set timeouts, and avoid following redirects automatically.</p>
 					</div>
 					<div id="network-controls">
