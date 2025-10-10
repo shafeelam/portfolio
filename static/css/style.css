@@ -1003,6 +1003,13 @@ background: #eee;
 .blog-header img{width: 180px;}
 #site-header{padding: 10px 0;}
 .bx-home:before{font-size: 25px;}
+article h2{margin-top:26px}
+pre{background:#0b1220;color:#e6eef6;padding:12px;border-radius:6px;overflow:auto}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
+.meta{color:var(--muted);font-size:13px}
+.badge{display:inline-block;background:#eef6ff;color:var(--accent);padding:4px 8px;border-radius:999px;font-weight:600;margin-right:6px}
+.lead-paragraph{font-size:16px;color:var(--muted);margin-bottom:10px}
+.div-paragraph{margin:10px 0}
 .readmore{color: #fff;
     background: #0563bb;
     padding: 10px 18px;
