@@ -1,84 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"" name="viewport">
-
-  <title></title>
-  <link rel="canonical" href="" />
-  <meta name="robots" content="INDEX, FOLLOW" /> 
-  <meta name="google-site-verification" content="8khh0kHGLRQZmp-AWEauDV8XBt37jiAgOT3XxnQ-VaM" />
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <!-- Favicons -->
-  <link href="../static/img/SH.png" rel="icon">
-  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <script src="../static/js/common.js"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,100&display=swap" rel="stylesheet">
-        
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- Vendor CSS Files -->
-  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="../static/css/style.css" rel="stylesheet">
-
-</head>
-
-<body>
-<div id="site-header"></div>
-  <section class="title-bar">
-<div class="container">
-      <span class="badge">Security Guide</span>
-      <h1>Server-Side Request Forgery (SSRF): An In-Depth Narrative Guide</h1>
-      <p class="lead">This guide explains SSRF in plain language and walks you through why it matters, how it typically appears in applications, and practical ways to defend against it. Examples in PHP, Node.js, and Python are kept short and defensive.</p>
-      <p class="meta">Updated: October 10, 2025</p>
-    </div>
-</section>
-
-    <article>
-<div class="container">
-      <section id="intro">
-        <h2>An approachable way to think about SSRF</h2>
-        <p class="lead-paragraph">Imagine your web server as a helpful assistant that can reach out to other services — download an image, check a URL, or fetch data for a preview. Server-Side Request Forgery, or SSRF, is when an attacker convinces that assistant to reach places it shouldn't, using inputs your application accepts. The key problem is trust: systems inside your network often treat requests coming from your server as trusted.</p>
-      </section>
-
-      <section id="why-it-matters">
-        <h2>Why SSRF matters</h2>
-        <p class="section-paragraph">SSRF is dangerous because it lets an external actor misuse the server's network access. That can mean quietly reading internal services, querying cloud metadata endpoints for credentials, or triggering administrative endpoints that aren't exposed publicly. In other words, an SSRF can turn a seemingly harmless feature — like fetching an avatar image or previewing a web page — into a window into your private infrastructure.</p>
-      </section>
-
-      <section id="how-it-appears">
-        <h2>How SSRF typically appears in real applications</h2>
-        <p class="section-paragraph">You will most often find SSRF where your application accepts a URL or path from a user and then performs a server-side fetch. Common examples are site previewers, import tools that fetch RSS or feeds, screenshot or PDF rendering services, and proxy endpoints. What makes these features convenient — the server doing the heavy lifting — also makes them risky when input is not constrained.</p>
-        <p class="section-paragraph">Sometimes the vulnerability is obvious because the server returns the fetched content to the attacker. Other times it is "blind": the attacker receives no direct response but can still confirm that the server performed the request by observing side effects such as DNS lookups or timing differences. Both forms are valuable to attackers for different purposes.</p>
-      </section>
-
-      <section id="how-it-happens">
-        <h2>What usually goes wrong</h2>
-        <p class="section-paragraph">A typical mistake is trusting a user-supplied value and passing it straight into a networking function. For instance, an endpoint that reads a `?url=` parameter and calls a simple fetch or file-read function without any validation can be redirected to internal IPs, cloud metadata endpoints, or services running on localhost. Other mistakes include following redirects without checking final destinations, allowing multiple protocols (like file:// or gopher://), and failing to normalize hostnames or IP representations.</p>
-      </section>
-
-      <section id="practical-defenses">
-        <h2>Practical defenses — philosophy first</h2>
-        <p class="section-paragraph">The most reliable approach is architectural: remove the need for arbitrary server-side fetches where possible. When that isn't possible, apply strict controls. Prefer an allowlist of approved hosts or domains and run network-level protections such as egress firewalls and proxies that enforce destination checks. Treat WAFs and input filters as useful but not sufficient on their own.</p>
-
-        <p class="section-paragraph">Other defensive ideas that pair well together are conservative URL parsing, rejecting direct IP addresses unless explicitly required, limiting redirects and request timeouts, and logging every outbound request so you can detect anomalies quickly.</p>
-      </section>
-
-      <section id="code-examples">
-        <h2>Short, defensive code examples</h2>
-        <p class="section-paragraph">Below are compact examples that show a safer mindset. They are intentionally conservative: validate, then act.</p>
-
-        <h3>PHP — validate and allowlist</h3>
-        <pre><code>&lt;?php
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"" name=" viewport">
+		<title></title>
+		<link rel="canonical" href="" />
+		<meta name="robots" content="INDEX, FOLLOW" />
+		<meta name="google-site-verification" content="8khh0kHGLRQZmp-AWEauDV8XBt37jiAgOT3XxnQ-VaM" />
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<!-- Favicons -->
+		<link href="../static/img/SH.png" rel="icon">
+		<link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+		<script src="../static/js/common.js"></script>
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,100&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<!-- Vendor CSS Files -->
+		<link href="../static/vendor/aos/aos.css" rel="stylesheet">
+		<link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+		<!-- Template Main CSS File -->
+		<link href="../static/css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="site-header"></div>
+		<section class="title-bar">
+			<div class="container">
+				<span class="badge">Security Guide</span>
+				<h1>Server-Side Request Forgery (SSRF): An In-Depth Narrative Guide</h1>
+				<p class="lead">This guide explains SSRF in plain language and walks you through why it matters, how it typically appears in applications, and practical ways to defend against it. Examples in PHP, Node.js, and Python are kept short and defensive.</p>
+				<p class="meta">Updated: October 10, 2025</p>
+				<article class="mt-5">
+					<div id="intro">
+						<h2>An approachable way to think about SSRF</h2>
+						<p class="lead-paragraph">Imagine your web server as a helpful assistant that can reach out to other services — download an image, check a URL, or fetch data for a preview. Server-Side Request Forgery, or SSRF, is when an attacker convinces that assistant to reach places it shouldn't, using inputs your application accepts. The key problem is trust: systems inside your network often treat requests coming from your server as trusted.</p>
+					</div>
+					<div id="why-it-matters">
+						<h2>Why SSRF matters</h2>
+						<p class="div-paragraph">SSRF is dangerous because it lets an external actor misuse the server's network access. That can mean quietly reading internal services, querying cloud metadata endpoints for credentials, or triggering administrative endpoints that aren't exposed publicly. In other words, an SSRF can turn a seemingly harmless feature — like fetching an avatar image or previewing a web page — into a window into your private infrastructure.</p>
+					</div>
+					<div id="how-it-appears">
+						<h2>How SSRF typically appears in real applications</h2>
+						<p class="div-paragraph">You will most often find SSRF where your application accepts a URL or path from a user and then performs a server-side fetch. Common examples are site previewers, import tools that fetch RSS or feeds, screenshot or PDF rendering services, and proxy endpoints. What makes these features convenient — the server doing the heavy lifting — also makes them risky when input is not constrained.</p>
+						<p class="div-paragraph">Sometimes the vulnerability is obvious because the server returns the fetched content to the attacker. Other times it is "blind": the attacker receives no direct response but can still confirm that the server performed the request by observing side effects such as DNS lookups or timing differences. Both forms are valuable to attackers for different purposes.</p>
+					</div>
+					<div id="how-it-happens">
+						<h2>What usually goes wrong</h2>
+						<p class="div-paragraph">A typical mistake is trusting a user-supplied value and passing it straight into a networking function. For instance, an endpoint that reads a `?url=` parameter and calls a simple fetch or file-read function without any validation can be redirected to internal IPs, cloud metadata endpoints, or services running on localhost. Other mistakes include following redirects without checking final destinations, allowing multiple protocols (like file:// or gopher://), and failing to normalize hostnames or IP representations.</p>
+					</div>
+					<div id="practical-defenses">
+						<h2>Practical defenses — philosophy first</h2>
+						<p class="div-paragraph">The most reliable approach is architectural: remove the need for arbitrary server-side fetches where possible. When that isn't possible, apply strict controls. Prefer an allowlist of approved hosts or domains and run network-level protections such as egress firewalls and proxies that enforce destination checks. Treat WAFs and input filters as useful but not sufficient on their own.</p>
+						<p class="div-paragraph">Other defensive ideas that pair well together are conservative URL parsing, rejecting direct IP addresses unless explicitly required, limiting redirects and request timeouts, and logging every outbound request so you can detect anomalies quickly.</p>
+					</div>
+					<div id="code-examples">
+						<h2>Short, defensive code examples</h2>
+						<p class="div-paragraph">Below are compact examples that show a safer mindset. They are intentionally conservative: validate, then act.</p>
+						<h3>PHP — validate and allowlist</h3>
+						<pre>
+																				<code>&lt;?php
 $allowedHosts = ['example.com', 'images.example.com'];
 
 $url = filter_input(INPUT_GET, 'url', FILTER_VALIDATE_URL);
@@ -104,10 +87,11 @@ if ($content === false) {
     exit;
 }
 echo $content;
-?&gt;</code></pre>
-
-        <h3>Node.js (Express) — parse and enforce</h3>
-        <pre><code>const { URL } = require('url');
+?&gt;</code>
+																			</pre>
+						<h3>Node.js (Express) — parse and enforce</h3>
+						<pre>
+																				<code>const { URL } = require('url');
 const allowedHosts = new Set(['example.com']);
 
 app.get('/fetch', async (req, res) =&gt; {
@@ -122,10 +106,11 @@ app.get('/fetch', async (req, res) =&gt; {
   } catch (err) {
     res.status(400).send('Invalid URL or fetch error');
   }
-});</code></pre>
-
-        <h3>Python — parse and restrict</h3>
-        <pre><code>from urllib.parse import urlparse
+});</code>
+																			</pre>
+						<h3>Python — parse and restrict</h3>
+						<pre>
+																				<code>from urllib.parse import urlparse
 import requests
 
 ALLOWED_HOSTS = {'example.com'}
@@ -137,47 +122,41 @@ def fetch(url):
     resp = requests.get(url, timeout=5, allow_redirects=False)
     resp.raise_for_status()
     return resp.text
-</code></pre>
-
-        <p class="section-paragraph">These snippets illustrate the pattern: do not assume the user input is safe; parse it, check the host against an allowlist, set timeouts, and avoid following redirects automatically.</p>
-      </section>
-
-      <section id="network-controls">
-        <h2>Network controls and architecture</h2>
-        <p class="section-paragraph">Even the best code checks can be bypassed if the server is allowed to reach sensitive internal endpoints. Use egress filtering to block private IP ranges from application hosts, and consider routing all outbound traffic through a proxy that enforces destination policies. In cloud environments, harden instance metadata services (for example, require IMDSv2 on AWS) and segment administrative interfaces behind strict ACLs.</p>
-      </section>
-
-      <section id="detecting">
-        <h2>Detecting SSRF attempts</h2>
-        <p class="section-paragraph">Logging is your first line of detection. Record outbound requests including hostname, IP (when resolvable), the initiating user or request ID, and timestamps. Watch for requests to private IP ranges, to cloud metadata endpoints, or a sudden spike in outbound lookups from a single account. IDS/IPS and behavior-based alerting can help catch blind SSRF attempts that do not return content to the attacker.</p>
-      </section>
-
-      <section id="pitfalls">
-        <h2>Common pitfalls worth remembering</h2>
-        <p class="section-paragraph">Attackers often rely on subtle encoding tricks: DNS rebinding, numeric IP encodings, IPv6 forms, and redirects can all bypass naive checks. Treat URL parsing and name resolution carefully: normalize inputs, check final IP addresses before connecting, and be skeptical of any feature that allows open network destinations.</p>
-      </section>
-
-      <section id="conclusion">
-        <h2>Final thoughts</h2>
-        <p class="section-paragraph">SSRF is less about a single bug and more about a lapse in boundary enforcement. When your server can act on untrusted input by reaching other systems, that trust needs to be enforced through both code and network configuration. Remove unnecessary features, validate inputs conservatively, and assume your server's network access is sensitive.</p>
-      </section>
-</div>
-       </article>
-
-
-<div id="site-footer"></div>
-  <!-- Vendor JS Files -->
-   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="../static/vendor/aos/aos.js"></script>
-  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../static/vendor/typed.js/typed.min.js"></script>
-  <script src="../static/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="../static/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="../static/js/main.js"></script>
-</body>
+</code>
+																			</pre>
+						<p class="div-paragraph">These snippets illustrate the pattern: do not assume the user input is safe; parse it, check the host against an allowlist, set timeouts, and avoid following redirects automatically.</p>
+					</div>
+					<div id="network-controls">
+						<h2>Network controls and architecture</h2>
+						<p class="div-paragraph">Even the best code checks can be bypassed if the server is allowed to reach sensitive internal endpoints. Use egress filtering to block private IP ranges from application hosts, and consider routing all outbound traffic through a proxy that enforces destination policies. In cloud environments, harden instance metadata services (for example, require IMDSv2 on AWS) and segment administrative interfaces behind strict ACLs.</p>
+					</div>
+					<div id="detecting">
+						<h2>Detecting SSRF attempts</h2>
+						<p class="div-paragraph">Logging is your first line of detection. Record outbound requests including hostname, IP (when resolvable), the initiating user or request ID, and timestamps. Watch for requests to private IP ranges, to cloud metadata endpoints, or a sudden spike in outbound lookups from a single account. IDS/IPS and behavior-based alerting can help catch blind SSRF attempts that do not return content to the attacker.</p>
+					</div>
+					<div id="pitfalls">
+						<h2>Common pitfalls worth remembering</h2>
+						<p class="div-paragraph">Attackers often rely on subtle encoding tricks: DNS rebinding, numeric IP encodings, IPv6 forms, and redirects can all bypass naive checks. Treat URL parsing and name resolution carefully: normalize inputs, check final IP addresses before connecting, and be skeptical of any feature that allows open network destinations.</p>
+					</div>
+					<div id="conclusion">
+						<h2>Final thoughts</h2>
+						<p class="div-paragraph">SSRF is less about a single bug and more about a lapse in boundary enforcement. When your server can act on untrusted input by reaching other systems, that trust needs to be enforced through both code and network configuration. Remove unnecessary features, validate inputs conservatively, and assume your server's network access is sensitive.</p>
+					</div>
+			</div>
+			</article>
+		</section>
+		<div id="site-footer"></div>
+		<!-- Vendor JS Files -->
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+		<script src="../static/vendor/aos/aos.js"></script>
+		<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+		<script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+		<script src="../static/vendor/typed.js/typed.min.js"></script>
+		<script src="../static/vendor/waypoints/noframework.waypoints.js"></script>
+		<script src="../static/vendor/php-email-form/validate.js"></script>
+		<!-- Template Main JS File -->
+		<script src="../static/js/main.js"></script>
+	</body>
 </html>
