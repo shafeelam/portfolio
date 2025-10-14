@@ -1012,7 +1012,16 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
 .div-paragraph{margin:10px 0}
 @media (min-width: 1200px){
   .blog-body .container{width: 900px;}
-   .blog-body h1{font-size: 46px !important;}
+   @media (min-width: 1200px) {
+    .blog-body h1 {
+        font-size: 36px !important;
+        line-height: 48px;
+      margin-bottom: 20px;
+    }
+    .blog-body h2 {
+        font-size: 26px !important;
+        line-height: 38px;
+    }
 }
 
 @media (max-width: 600px){
