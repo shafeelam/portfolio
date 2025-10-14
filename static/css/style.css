@@ -1012,7 +1012,6 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
 .div-paragraph{margin:10px 0}
 @media (min-width: 1200px){
   .blog-body .container{width: 900px;}
-   @media (min-width: 1200px) {
     .blog-body h1 {
         font-size: 36px !important;
         line-height: 48px;
@@ -1029,7 +1028,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
   .blog-header img {
     width: 140px;
 }
-  .blog-body h2{font-size: 26px !important; text-transform: unset !important;padding-bottom:0 !important; margin-bottom: 0 !important;}
+  .blog-body h2{font-size: 22px !important; text-transform: unset !important;padding-bottom:0 !important;margin-top: 15px; margin-bottom: 0 !important;}
  
 }
  .blog-body h2{text-transform: unset !important;padding-bottom:0 !important; margin-bottom: 10px !important;}
