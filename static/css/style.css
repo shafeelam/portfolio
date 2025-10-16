@@ -1031,6 +1031,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
   .blog-body h2{font-size: 22px !important; text-transform: unset !important;padding-bottom:0 !important;margin-top: 15px; margin-bottom: 0 !important;}
  
 }
+.title-bar.blog-body img{border-radius: 10px;}
  .blog-body h2{text-transform: unset !important;padding-bottom:0 !important; margin-bottom: 10px !important;}
 .readmore{color: #fff;
     background: #0563bb;
