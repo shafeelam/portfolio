@@ -33,6 +33,38 @@
 </head>
 
 <body>
+  <style>
+    :root{
+--accent:#0a84ff;
+--muted:#6b7280;
+--bg:#ffffff;
+--card:#f8fafc;
+}
+    .example-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+.card{padding:14px;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(10,11,15,0.04);}
+
+
+/* Button micro-interaction */
+.btn{
+display:inline-block;padding:10px 16px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),#0066ff);color:#fff;font-weight:600;cursor:pointer;transform:translateZ(0);
+transition:transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease;
+box-shadow:0 6px 18px rgba(10,132,255,0.12);
+}
+.btn:active{transform:translateY(2px) scale(.995)}
+.btn:hover{transform:translateY(-4px) scale(1.01)}
+
+
+/* Heart like */
+.like{display:inline-flex;align-items:center;gap:8px}
+.heart{width:42px;height:42px;border-radius:10px;background:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(11,20,40,0.06);}
+.heart svg{width:22px;height:22px;transform-origin:center;transition:transform 420ms cubic-bezier(.2,.9,.3,1);}
+.heart.liked svg{transform:scale(1.15) rotate(-10deg)}
+
+
+/* Loading / progress */
+.loader{height:8px;background:#e6eefc;border-radius:999px;overflow:hidden}
+.progress{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#00b3ff);transition:width 600ms cubic-bezier(.2,.9,.3,1)}
+  </style>
 <div id="site-header"></div>
 <section class="title-bar blog-body">
 <div class="container">
