@@ -1,38 +1,44 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Created manually for https://shafeel-am.netlify.app/ -->
-
-  <url>
-    <loc>https://shafeel-am.netlify.app/</loc>
-    <lastmod>2025-10-11T22:02:30+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.00</priority>
-  </url>
-
-  <url>
-    <loc>https://shafeel-am.netlify.app/blogs</loc>
-    <lastmod>2025-10-11T22:02:30+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://shafeel-am.netlify.app/blog/from-prompt-to-production-how-ai-agents-are-building-full-stack-web-apps-in-2025</loc>
-    <lastmod>2025-10-11T22:02:30+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://shafeel-am.netlify.app/blog/server-side-request-forgery-ssrf-an-in-depth-narrative-guide</loc>
-    <lastmod>2025-10-11T22:02:30+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://shafeel-am.netlify.app/</loc>
+<lastmod>2025-10-13T09:02:26+01:00</lastmod>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blogs</loc>
+<lastmod>2025-10-13T09:02:26+01:00</lastmod>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blog/from-prompt-to-production-how-ai-agents-are-building-full-stack-web-apps</loc>
+<lastmod>2025-10-21T09:02:27+01:00</lastmod>
+<priority>0.8</priority>
+</url>
+<url> 
+<loc>https://shafeel-am.netlify.app/blog/server-side-request-forgery-ssrf-an-in-depth-narrative-guide</loc>
+<lastmod>2025-10-13T09:02:27+01:00</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blog/the-rise-of-dynamic-cms-and-no-code-solutions-in-modern-web-development-2025-edition</loc>
+<lastmod>2025-10-14T09:02:27+01:00</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blog/no-code-low-code-platforms-vs-traditional-development-in-depth-analysis</loc>
+<lastmod>2025-10-16T09:02:27+01:00</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blog/motion-ui-micro-interactions-and-advanced-front-end-design</loc>
+<lastmod>2025-10-22T09:02:27+01:00</lastmod>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://shafeel-am.netlify.app/blog/brandilux-innovating-the-web-for-you-deep-dive-services</loc>
+<lastmod>2025-10-27T09:02:27+01:00</lastmod>
+<priority>0.8</priority>
+</url>
 </urlset>
