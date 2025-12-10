@@ -198,7 +198,6 @@
 
       </div>
       <div class="swiper-pagination"></div>
-
     </div>
  
     <h2 class="section-title">Why Brands Choose Brandilux</h2>
@@ -244,19 +243,19 @@
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: 1,
   spaceBetween: 20,
-  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    pagination: { el: ".swiper-pagination", clickable: true },
   breakpoints: { 768: { slidesPerView: 2 } }
 });
 const swiperWorkflow = new Swiper(".mySwiperWorkflow", {
   slidesPerView: 1,
   spaceBetween: 20,
-  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    pagination: { el: ".swiper-pagination", clickable: true },
   breakpoints: { 768: { slidesPerView: 2 } }
 });
 const swiperProjects = new Swiper(".mySwiperProjects", {
   slidesPerView: 1,
   spaceBetween: 20,
-  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+  pagination: { el: ".swiper-pagination", clickable: true },
   breakpoints: { 768: { slidesPerView: 2 } }
 });
 </script>
