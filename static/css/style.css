@@ -1022,6 +1022,11 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
         line-height: 38px;
       margin-top: 15px;
     }
+   .blog-body h3 {
+        font-size: 20px !important;
+        line-height: 30px;
+      margin-top: 15px;
+    }
 }
 
 @media (max-width: 600px){
@@ -1029,6 +1034,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Roboto Mono,monospace}
     width: 140px;
 }
   .blog-body h2{font-size: 22px !important; text-transform: unset !important;padding-bottom:0 !important;margin-top: 15px; margin-bottom: 0 !important;}
+   .blog-body h3{font-size: 18px !important; text-transform: unset !important;padding-bottom:0 !important;margin-top: 15px; margin-bottom: 0 !important;}
  
 }
 .title-bar.blog-body img{border-radius: 10px;}
